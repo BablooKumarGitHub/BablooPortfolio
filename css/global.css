@@ -1,6 +1,6 @@
 :root {
-    --themeColor: #191970;
-    --secondaryColor: #4141df;
+    --themeColor: #eef12a;
+    --secondaryColor: #58ce14;
     --headerTextColor: #cde0ffe5;
 }
 
@@ -57,10 +57,10 @@
     background: var(--themeColor);
   
     /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, #19197080, #4141df80);
+    background: -webkit-linear-gradient(to right, #18ee0580, #a1549b80);
   
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, #19197080, #4141df80)
+    background: linear-gradient(to right, #cf52c580, #53df4180)
   }
 
 .LinkButton {

@@ -2,8 +2,8 @@
     height: auto;
     width: 300px;
     display: none;
-    background: rgb(192, 249, 60);
-    background: linear-gradient(135deg, rgba(25,25,112,1) 25%, rgba(65,65,223,1) 100%);
+    background: rgb(111, 150, 20);
+    background: linear-gradient(135deg, rgb(115, 160, 9) 25%, rgb(56, 158, 25) 100%);
     margin: 5px;
     text-decoration: none;
     color: white;
