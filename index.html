@@ -12,15 +12,151 @@
     <meta name="author" content="Babloo Kumar">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/global.css" rel="stylesheet" type="text/css"/>
-</head>
+    <link href="/css/index.css" rel="stylesheet" type="text/css"/>
 
     <title>Babloo Kumar</title>
     <meta name="twitter:title" content="Babloo Kumar"/>
     <meta name="description" content="Full stack personal portfolio and blog site by Babloo Kumar, software developer at the Tenali Education Academy Pvt. Ltd. New Delhi India."/>
     <meta name="twitter:description" content="Full stack personal portfolio and blog site by Babloo Kumar, software developer at the Tenali Education Academy Pvt. Ltd. New Delhi India."/>
+
+<style>
+    /* globle css  */
+:root {
+    --themeColor: #eef12a;
+    --secondaryColor: #58ce14;
+    --headerTextColor: #cde0ffe5;
+}
+
+#Logo {
+    height: 40px;
+    width: 40px;
+    border-radius: 55%;
+    outline: none;
+}
+
+.move_when_hovered {
+    transition: transform .2s ease 0s;
+    transform: translateY(8px);
+}
+
+.move_when_hovered:hover {
+    transform: translateY(0px);
+}
+
+.opaque_when_hovered {
+    transition: opacity .5s
+}
+
+.opaque_when_hovered:hover {
+    opacity: .7;
+}
+
+#BodyContainer {
+    margin-top: 70px;
+}
+
+.HeaderTextColor {
+    color: var(--headerTextColor);
+}
+
+.ThemeColor {
+    background-color: var(--themeColor);
+}
+
+.SecondaryColor {
+    background-color: var(--secondaryColor);
+}
+
+.SecondaryColor:focus {
+    background-color: var(--secondaryColor);
+}
+
+.Rounded {
+    border-radius: 10px;
+}
+
+.ThemeToSecondaryGradient {
+    /* fallback for old browsers */
+    background: var(--themeColor);
+  
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, #18ee0580, #a1549b80);
+  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #cf52c580, #53df4180)
+  }
+
+.LinkButton {
+    width: 50%;
+    height: 60px;
+    border: rgba(255, 255, 255, 0.651);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 15px;
+    background-color: var(--themeColor);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+}
+
+.NoDecoration {
+    text-decoration: none;
+    color: white;
+}
+
+#MessageInput {
+    height: 300px;
+}
+
+.SuccessMessage {
+    color: var(--bs-success);
+    display: none;
+}
+
+.ErrorMessage {
+    color: var(--bs-danger);
+    display: none;
+}
+/* Index css  */
+.Project {
+    height: auto;
+    width: 300px;
+    display: none;
+    background: rgb(111, 150, 20);
+    background: linear-gradient(135deg, rgb(115, 160, 9) 25%, rgb(56, 158, 25) 100%);
+    margin: 5px;
+    text-decoration: none;
+    color: white;
+    border: rgba(255, 255, 255, 0.651);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 15px;
+}
+
+#AboutMeContainer {
+    background: rgb(25,25,112);
    
-<head>
-    <link href="/css/index.css" rel="stylesheet" type="text/css"/>
+    background: linear-gradient(135deg, rgba(25,25,112,1) 0%, rgba(45,45,200,1) 100%);
+}
+
+.SkillsRowContainer {
+    margin: auto;
+    height: auto;
+    width: 80%;
+    background: rgb(25,25,112);
+    background: linear-gradient(135deg, rgba(25,25,112,1) 0%, rgba(45,45,200,1) 100%);
+}
+
+#SkillsTypeRowTemplate {
+    display: none;
+}
+
+</style>
+
 </head>
 
 <body class="bg-black text-white">
@@ -51,6 +187,30 @@
                       <li><a class="dropdown-item" href="/#Skills" title="Skills">Skills</a></li>
                       <li><a class="dropdown-item" href="/#Contact" title="Contact Me">Contact Me</a></li>
                     </ul>
+                  </li>
+                  <li class="my-auto mx-2 nav-item ">
+                    <a class="fs-4 fw-semibold nav-link active show" href="/#Projects" role="button" aria-expanded="true" title="Projects">
+                      Projects
+                    </a>
+                   
+                  </li>
+                  <li class="my-auto mx-2 nav-item ">
+                    <a class="fs-4 fw-semibold nav-link active show" href="/#AboutMe" role="button" aria-expanded="true" title="AboutMe">
+                        AboutMe
+                    </a>
+                   
+                  </li>
+                  <li class="my-auto mx-2 nav-item ">
+                    <a class="fs-4 fw-semibold nav-link active show" href="/#Skills" role="button" aria-expanded="true" title="Skills">
+                        Skills
+                    </a>
+                   
+                  </li>
+                  <li class="my-auto mx-2 nav-item ">
+                    <a class="fs-4 fw-semibold nav-link active show" href="/#Contact" role="button" aria-expanded="true" title="Contact">
+                        ContactUs
+                    </a>
+                   
                   </li>
                  
                 </ul>
@@ -577,5 +737,144 @@ Uttarakhand India.</p> </div>
     <script>
         document.getElementById("nav-link-home").classList.add("active");
     </script>
+
+ <!-- api Call Scripts -->
+ <script>
+    export async function apiCall(url, method, headers, body) {
+    let options = {};
+    options.method = method;
+    if (headers) {
+        options.headers = headers;
+    }
+    if (body) {
+        options.body = JSON.stringify(body);
+    }
+    return await fetch(url, options);
+};
+
+ </script>
+
+ <!-- Contact Form Scripts -->
+ <script>
+    import { apiCall } from "./apiCall.js";
+
+window.contactFormSubmit = contactFormSubmit;
+
+async function contactFormSubmit() {
+    const name = document.getElementById("NameInput").value;
+    const contactInfo = document.getElementById("ContactInfoInput").value;
+    const message = document.getElementById("MessageInput").value;
+    const url = '/contact/send';
+    const headers = {
+        'Content-Type': 'application/json'
+    };
+    const body = {
+        name: name,
+        contactInfo: contactInfo,
+        body: message
+    };
+    const result = await apiCall(url, "POST", headers, body);
+    const json = await result.json();
+    const contactFormSuccessElement = document.getElementById("ContactFormSuccess");
+    const contactFormErrorElement = document.getElementById("ContactFormError");
+    if (result.status === 200) {
+        contactFormSuccessElement.style.display = "flex";
+        contactFormErrorElement.style.display = "none";
+    } else {
+        contactFormSuccessElement.style.display = "none";
+        contactFormErrorElement.style.display = "flex";
+        contactFormErrorElement.textContent = json.reason;
+        if (result.status !== 406) {
+            alert(`Error in sending message, refresh. If this problem persists, contact me.\n\nReason: ${json.reason}`);
+        }
+    }
+}
+ </script>
+
+  <!-- projects Scripts -->
+  <script>
+    import { apiCall } from "./apiCall.js";
+import { loadSkills } from "./skills.js";
+
+$(document).ready(function() {
+    $.get("/files/projects.html", async function(projectTemplate) {
+        $("#ProjectRows").append(projectTemplate);
+        const url = `/projects/get`;
+        const result = await apiCall(url, "GET", null, null);
+        const json = await result.json();
+        if (result.status !== 200) {
+            alert(`Error in loading projects, refresh. If this problem persists, contact me.\n\nReason: ${json.reason}`);
+            return;
+        }
+        const projects = json.projects;
+        for (const project of projects) {
+            new Project(project);
+        }
+        document.getElementById("projectSpinner").style.display = "none";
+    });
+});
+
+class Project {
+    constructor(project) {
+        $("#ProjectTemplate").clone()
+                                .prop('id', "Project"+project.id)
+                                .appendTo("#ProjectRows");
+        const element = document.querySelector(`#ProjectRows #Project${project.id}`);
+        element.querySelector("#Name").textContent = project.name;
+        element.querySelector("#Description").textContent = project.description;
+        element.querySelector("#StartDate").textContent = project.startDate;
+        element.querySelector("#EndDate").textContent = project.endDate;
+        const skillsContainer = element.querySelector("#SkillsContainer");
+        loadSkills(project.skills, skillsContainer);
+        element.href = project.link;
+        element.style.display = "block";
+    }
+}
+  </script>
+
+   <!-- Skills Scripts -->
+   <script>
+    import { apiCall } from "./apiCall.js";
+
+$(document).ready(async function() {
+    const url = '/skills/get';
+    const result = await apiCall(url, "GET", null, null);
+    const json = await result.json();
+    if (result.status !== 200) {
+        alert(`Error in loading skills, refresh. If this problem persists, contact me.\n\nReason: ${json.reason}`);
+        return;
+    }
+    const skillsByType = json.skills;
+    Object.keys(skillsByType).forEach(function(key) {
+        const rowHTML = document.getElementById("SkillsTypeRowTemplate").cloneNode(true);
+        rowHTML.id = "";
+        rowHTML.querySelector("#SkillType").textContent = key;
+        const SkillsRowContainer = rowHTML.querySelector("#SkillsRowContainer");
+        const skills = skillsByType[key];
+        loadSkills(skills, SkillsRowContainer);
+        document.getElementById("SkillsTypeRow").appendChild(rowHTML);
+        rowHTML.style.display = "inline";
+        document.getElementById("skillSpinner").style.display = "none";
+    });
+});
+
+export function loadSkills(skills, container) {
+    for (const skill of skills) {
+        const element = document.createElement('span');
+        element.className = "m-1 btn btn-dark btn-sm";
+        element.innerHTML = 
+        ((skill.simpleIconsIconSlug) ? 
+        `<img height="16" width="16" src="https://cdn.simpleicons.org/${skill.simpleIconsIconSlug}" class="mx-1"/>` : "") +
+        `
+            <span>
+                ${skill.name}
+            </span>
+        `;
+        container.appendChild(element);
+        
+    }
+}
+   </script>
+
 </body>
 </html>
